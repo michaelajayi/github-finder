@@ -8,24 +8,21 @@ import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
 import axios from "axios";
 
-import GithubState from './context/github/GithubState';
-
 
 import "./App.css";
 
 const App = () => {
-
-  const [users, setUsers] = useState([]); 
-  const [user, setUser] = useState({}); 
-  const [repos, setRepos] = useState([]); 
-  const [loading, setLoading] = useState(false); 
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({});
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
-  
+
   // Search Github users
   const searchUsers = async (text) => {
     setLoading(true);
 
-    const res = await axios.get( 
+    const res = await axios.get(
       `https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
 
@@ -61,17 +58,16 @@ const App = () => {
   const clearUsers = () => {
     setUsers([]);
     setLoading(false);
-  }
+  };
 
   // Set Alert
   const showAlert = (msg, type) => {
     setAlert({ msg, type });
 
-    setTimeout(() => setAlert( null), 5000);
+    setTimeout(() => setAlert(null), 5000);
   };
 
-    return (
-      <GithubState>
+  return (
       <Router>
         <div className='App'>
           <Navbar />
@@ -112,8 +108,7 @@ const App = () => {
           </div>
         </div>
       </Router>
-      </GithubState>
-    );
-  }
+  );
+};
 
 export default App;
