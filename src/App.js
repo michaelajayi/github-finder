@@ -15,9 +15,7 @@ import "./App.css";
 
 const App = () => {
   const TRACKING_ID = "G-DR8NV1TMPJ";
-  ReactGA.initialize(TRACKING_ID, {
-    debug: true,
-  });
+  ReactGA.initialize(TRACKING_ID);
   ReactGA.pageview(window.location.pathname + window.location.search);
 
   return (
