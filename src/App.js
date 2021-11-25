@@ -6,6 +6,7 @@ import Alert from "./components/layout/Alert";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import NotFound from "./components/pages/NotFound";
+import ReactGA from "react-ga";
 
 import GithubState from "./context/github/GithubState";
 import AlertState from "./context/alert/AlertState";
@@ -13,6 +14,9 @@ import AlertState from "./context/alert/AlertState";
 import "./App.css";
 
 const App = () => {
+  const TRACKING_ID = "G-DR8NV1TMPJ";
+  ReactGA.initialize(TRACKING_ID);
+
   return (
     <GithubState>
       <AlertState>
@@ -25,7 +29,7 @@ const App = () => {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/about' component={About} />
                 <Route exact path='/user/:login' component={User} />
-                <Route component = {NotFound} />
+                <Route component={NotFound} />
               </Switch>
             </div>
           </div>
